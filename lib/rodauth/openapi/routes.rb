@@ -91,10 +91,10 @@ module Rodauth
         response(200, description)
       end
 
-      def json_response(description = "", example)
+      def json_response(description = "", example, schema: nil)
         response(200, description, content: {
           "application/json" => {
-            schema: infer_schema(example),
+            schema: schema || infer_schema(example),
             example: example
           }
         })
